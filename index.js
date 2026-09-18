@@ -114,3 +114,95 @@ function gameObject() {
         },
     };
 }
+
+function numPointsScored(playerName) {
+    const game = gameObject();
+
+    for (const team in game) {
+        for (const player in game[team].players) {
+            if (player === playerName) {
+                return game[team].players[player].points;
+            }
+        }
+    }
+}
+
+function shoeSize(playerName) {
+    const game = gameObject();
+
+    for (const team in game) {
+        for (const player in game[team].players) {
+            if (player === playerName) {
+                return game[team].players[player].shoe;
+            }
+        }
+    }
+}
+
+function teamColors(teamName) {
+    const game = gameObject();
+
+    for (const team in game) {
+        if (game[team].teamName === teamName) {
+            return game[team].colors;
+        }
+    }
+}
+
+function teamNames() {
+    const game = gameObject();
+    const names = [];
+
+    for (const team in game) {
+        names.push(game[team].teamName);
+    }
+
+    return names;
+}
+
+function playerNumbers(teamName) {
+    const game = gameObject();
+    const numbers = [];
+
+    for (const team in game) {
+        if (game[team].teamName === teamName) {
+            for (const player in game[team].players) {
+                numbers.push(game[team].players[player].number);
+            }
+        }
+    }
+
+    return numbers;
+}
+
+function playerStats(playerName) {
+    const game = gameObject();
+
+    for (const team in game) {
+        for (const player in game[team].players) {
+            if (player === playerName) {
+                return game[team].players[player];
+            }
+        }
+    }
+}
+
+function bigShoeRebounds() {
+    const game = gameObject();
+    let biggestShoe = 0;
+    let rebounds = 0;
+
+    for (const team in game) {
+        for (const player in game[team].players) {
+            const currentPlayer = game[team].players[player];
+
+            if (currentPlayer.shoe > biggestShoe) {
+                biggestShoe = currentPlayer.shoe;
+                rebounds = currentPlayer.rebounds;
+            }
+        }
+    }
+
+    return rebounds;
+}
+
